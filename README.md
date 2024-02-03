@@ -76,15 +76,3 @@ Contributions to the Library Management System are welcome. Please feel free to 
 ## Support
 
 If you encounter any issues or have any questions about the Library Management System, please open an issue in the GitHub repository.
-
-## Authors
-  
-- **Your Name** - _Initial work_ - [YourUsername](https://github.com/)
-
-## Acknowledgments
-
-- Thanks to all contributors who have helped to improve the Library Management System.
-
----
-
-This README provides a basic overview of the Library Management System project, including how to compile and run the application. Adjust the content as necessary to match your project's specifics and personal or organizational details.
