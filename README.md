@@ -76,3 +76,11 @@ Contributions to the Library Management System are welcome. Please feel free to 
 ## Support
 
 If you encounter any issues or have any questions about the Library Management System, please open an issue in the GitHub repository.
+
+## Team Members
+
+G.A.S.D.Gajadeera       COHNDSE23.3F-010
+W.M.I.A.Gangoda         COHNDSE23.3F-039
+L.W.S.D.Alwis           COHNDSE23.3F-062
+T.K.D.H.Ranashingha     COHNDSE23.3F-081
+J.J.M.E.J.Gunashingha   COHNDSE23.3F-085   

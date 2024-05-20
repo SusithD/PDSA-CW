@@ -7,15 +7,15 @@
 System::System() {}
 
 System::~System() {
-    // Destructor definition - even if it's empty
+    
 }
 
 void System::createBook(int bno, int quant, const std::string& bname, const std::string& aname, const std::string& pname) {
-    // Check if the book already exists
+   
     auto it = bookMap.find(bno);
-    if (it == bookMap.end()) { // Book does not exist, so add it
+    if (it == bookMap.end()) { 
         books.emplace_back(bno, quant, bname, aname, pname);
-        bookMap[bno] = &books.back(); // Point to the newly added book
+        bookMap[bno] = &books.back(); 
         std::cout << "Book added successfully.\n";
     } else {
         std::cout << "Book already exists.\n";
@@ -23,9 +23,9 @@ void System::createBook(int bno, int quant, const std::string& bname, const std:
 }
 
 void System::createStudent(const std::string& name, int admno) {
-    // Check if the student already exists
+    
     auto it = std::find_if(students.begin(), students.end(), [admno](const Student& s) { return s.admno == admno; });
-    if (it == students.end()) { // Student does not exist, so add
+    if (it == students.end()) { 
         students.emplace_back(name, admno);
         std::cout << "Student added successfully.\n";
     } else {

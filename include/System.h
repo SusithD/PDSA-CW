@@ -11,8 +11,8 @@ class System {
 private:
     std::vector<Book> books;
     std::vector<Student> students;
-    std::unordered_map<int, Book*> bookMap; // Maps book number to Book pointer for quick access
-    std::unordered_map<int, Student*> studentMap; // Maps admission number to Student pointer
+    std::unordered_map<int, Book*> bookMap; 
+    std::unordered_map<int, Student*> studentMap; 
 
 public:
     System();

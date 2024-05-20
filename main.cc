@@ -1,11 +1,10 @@
 #include "include/System.h"
 #include <iostream>
 #include <limits>
-#include <string> // Include for std::string
-
+#include <string> 
 void clearCin() {
-    std::cin.clear(); // Reset any error flags
-    std::cin.ignore(std::numeric_limits<std::streamsize>::max(), '\n'); // Discard the line
+    std::cin.clear(); 
+    std::cin.ignore(std::numeric_limits<std::streamsize>::max(), '\n'); 
 }
 
 void printHeader() {
@@ -39,7 +38,7 @@ int main() {
         std::cout << "--------------------------------\n";
         std::cout << "Enter your choice: ";
         std::cin >> choice;
-        clearCin(); // Clear cin to avoid issues with getline
+        clearCin(); 
 
         int bno, admno, quant;
         std::string bname, aname, pname, sname;
@@ -51,7 +50,7 @@ int main() {
                 std::cin >> bno;
                 std::cout << "Enter quantity: ";
                 std::cin >> quant;
-                clearCin(); // Clear cin to properly use getline next
+                clearCin(); 
                 std::cout << "Enter book name: ";
                 getline(std::cin, bname);
                 std::cout << "Enter author name: ";

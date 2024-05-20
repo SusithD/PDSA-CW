@@ -26,7 +26,7 @@ void System::showStudent(int admno) const {
                   << "Name: " << student.name << "\n";
         if (student.token == 1) {
             std::cout << "Book Issued (Book No.): " << student.bno << std::endl;
-            // Optionally, find and display book details using student.bno
+            
             auto bookIt = std::find_if(books.begin(), books.end(), [student](const Book& book) { return book.bno == student.bno; });
             if (bookIt != books.end()) {
                 const auto& book = *bookIt;
