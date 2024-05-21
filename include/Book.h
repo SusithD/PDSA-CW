@@ -10,9 +10,9 @@ struct Book {
     std::string aname;
     std::string pname;
 
-    onvenience
+    // Constructor
     Book(int bno, int quant, std::string bname, std::string aname, std::string pname)
         : bno(bno), quant(quant), bname(std::move(bname)), aname(std::move(aname)), pname(std::move(pname)) {}
 };
 
-#endif 
+#endif // BOOK_H
