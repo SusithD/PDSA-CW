@@ -129,20 +129,93 @@ int main()
                 switch (subChoice)
                 {
                 case 1:
+                {
                     std::cout << "\n-- Create New Book --\n";
-                    std::cout << "Enter book number: ";
-                    std::cin >> bno;
-                    std::cout << "Enter quantity: ";
-                    std::cin >> quant;
+
+                    // Validate book number
+                    while (true)
+                    {
+                        std::cout << "Enter book number: ";
+                        std::cin >> bno;
+                        if (std::cin.fail() || bno <= 0)
+                        {
+                            std::cin.clear();
+                            std::cin.ignore(std::numeric_limits<std::streamsize>::max(), '\n');
+                            std::cout << "Invalid input. Please enter a positive integer for the book number.\n";
+                        }
+                        else
+                        {
+                            break;
+                        }
+                    }
+
+                    // Validate quantity
+                    while (true)
+                    {
+                        std::cout << "Enter quantity: ";
+                        std::cin >> quant;
+                        if (std::cin.fail() || quant < 0)
+                        {
+                            std::cin.clear();
+                            std::cin.ignore(std::numeric_limits<std::streamsize>::max(), '\n');
+                            std::cout << "Invalid input. Please enter a non-negative integer for the quantity.\n";
+                        }
+                        else
+                        {
+                            break;
+                        }
+                    }
                     clearCin();
-                    std::cout << "Enter book name: ";
-                    getline(std::cin, bname);
-                    std::cout << "Enter author name: ";
-                    getline(std::cin, aname);
-                    std::cout << "Enter publication name: ";
-                    getline(std::cin, pname);
+
+                    // Validate book name
+                    while (true)
+                    {
+                        std::cout << "Enter book name: ";
+                        getline(std::cin, bname);
+                        if (bname.empty())
+                        {
+                            std::cout << "Book name cannot be empty. Please enter a valid book name.\n";
+                        }
+                        else
+                        {
+                            break;
+                        }
+                    }
+
+                    // Validate author name
+                    while (true)
+                    {
+                        std::cout << "Enter author name: ";
+                        getline(std::cin, aname);
+                        if (aname.empty())
+                        {
+                            std::cout << "Author name cannot be empty. Please enter a valid author name.\n";
+                        }
+                        else
+                        {
+                            break;
+                        }
+                    }
+
+                    // Validate publication name
+                    while (true)
+                    {
+                        std::cout << "Enter publication name: ";
+                        getline(std::cin, pname);
+                        if (pname.empty())
+                        {
+                            std::cout << "Publication name cannot be empty. Please enter a valid publication name.\n";
+                        }
+                        else
+                        {
+                            break;
+                        }
+                    }
+
                     librarySystem.createBook(bno, quant, bname, aname, pname);
                     break;
+                }
+
                 case 2:
                     std::cout << "\n-- Show Book Details --\n";
                     std::cout << "Enter book number: ";
