@@ -8,7 +8,16 @@ void clearCin() {
 }
 
 void printHeader() {
-    std::cout << R"(
+    // ANSI escape codes for color
+    const std::string RESET = "\033[0m";
+    const std::string RED = "\033[31m";
+    const std::string GREEN = "\033[32m";
+    const std::string YELLOW = "\033[33m";
+    const std::string BLUE = "\033[34m";
+    const std::string MAGENTA = "\033[35m";
+    const std::string CYAN = "\033[36m";
+
+    std::cout << RED << R"(
   _     _ _                                _   _                                      
  | |   (_) |                              | | (_)                                     
  | |    _| |__  _ __ __ _ _ __ _   _    __| |  _ _ __   __ _                          
@@ -17,8 +26,13 @@ void printHeader() {
  |______|_|_.__/|_|  \__,_|_|   \__, |  \__,_| |_|_| |_|\__, |                         
                                 __/ |                    __/ |                         
                                |___/                    |___/                          
-
-)" << '\n';
+)" << RESET << '\n';
+    std::cout << GREEN << "Welcome to the Library Management System\n" << RESET;
+    std::cout << YELLOW << "--------------------------------\n" << RESET;
+    std::cout << CYAN << "This system allows you to manage books and students.\n"
+              << "You can create, view, issue, and return books.\n"
+              << "Students can be registered and managed easily.\n" << RESET;
+    std::cout << YELLOW << "--------------------------------\n" << RESET;
 }
 
 int main() {
