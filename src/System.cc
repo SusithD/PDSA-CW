@@ -112,3 +112,94 @@ bool System::checkBookAvailability(int bno) const {
     }
     return false;
 }
+
+bool System::deleteBook(int bno) {
+    auto it = std::find_if(books.begin(), books.end(), [bno](const Book& book) { return book.bno == bno; });
+    if (it != books.end()) {
+        deletedBooksStack.push(*it); // Push the deleted book onto the stack
+        books.erase(it); // Erase the book from the system
+        std::cout << "Book deleted successfully.\n";
+        return true; // Return true indicating successful deletion
+    } else {
+        std::cout << "Book not found.\n";
+        return false; // Return false indicating book not found
+    }
+}
+
+void System::undoDeleteBook() {
+    if (!deletedBooksStack.empty()) {
+        Book book = deletedBooksStack.top(); // Get the top book from the stack
+        books.push_back(book); // Add the deleted book back to the system
+        deletedBooksStack.pop(); // Remove the top item from the stack
+        std::cout << "Undone deletion of book.\n";
+    } else {
+        std::cout << "No deleted books to undo.\n";
+    }
+}
+
+void System::redoDeleteBook() {
+    if (!deletedBooksStack.empty()) {
+        Book book = deletedBooksStack.top(); // Get the top book from the stack
+        deletedBooksStack.pop(); // Remove the top item from the stack
+        books.push_back(book); // Add the book back to the system
+        std::cout << "Redone deletion of book.\n";
+    } else {
+        std::cout << "No deleted books to redo.\n";
+    }
+}
+
+bool System::deleteStudent(int admno) {
+    auto it = std::find_if(students.begin(), students.end(), [admno](const Student& student) { return student.admno == admno; });
+    if (it != students.end()) {
+        deletedStudentsStack.push(*it); // Push the deleted student onto the stack
+        students.erase(it); // Erase the student from the system
+        std::cout << "Student deleted successfully.\n";
+        return true; // Return true indicating successful deletion
+    } else {
+        std::cout << "Student not found.\n";
+        return false; // Return false indicating student not found
+    }
+}
+
+void System::undoDeleteStudent() {
+    if (!deletedStudentsStack.empty()) {
+        Student student = deletedStudentsStack.top(); // Get the top student from the stack
+        students.push_back(student); // Add the deleted student back to the system
+        deletedStudentsStack.pop(); // Remove the top item from the stack
+        std::cout << "Undone deletion of student.\n";
+    } else {
+        std::cout << "No deleted students to undo.\n";
+    }
+}
+
+void System::redoDeleteStudent() {
+    if (!deletedStudentsStack.empty()) {
+        Student student = deletedStudentsStack.top(); // Get the top student from the stack
+        deletedStudentsStack.pop(); // Remove the top item from the stack
+        students.push_back(student); // Add the student back to the system
+        std::cout << "Redone deletion of student.\n";
+    } else {
+        std::cout << "No deleted students to redo.\n";
+    }
+}
+
+void System::displayAllBooks() const {
+    std::cout << "All Books:\n";
+    for (const auto& book : books) {
+        std::cout << "Book Number: " << book.bno << "\n"
+                  << "Name: " << book.bname << "\n"
+                  << "Author: " << book.aname << "\n"
+                  << "Publication: " << book.pname << "\n"
+                  << "Quantity: " << book.quant << "\n\n";
+    }
+}
+
+void System::displayAllStudents() const {
+    std::cout << "All Students:\n";
+    for (const auto& student : students) {
+        std::cout << "Admission Number: " << student.admno << "\n"
+                  << "Name: " << student.name << "\n"
+                  << "Book Issued (Book No.): " << student.bno << "\n"
+                  << "Token: " << student.token << "\n\n";
+    }
+}

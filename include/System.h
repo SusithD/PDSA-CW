@@ -6,6 +6,7 @@
 
 #include <vector>
 #include <unordered_map>
+#include <stack>
 
 class System {
 private:
@@ -13,6 +14,8 @@ private:
     std::vector<Student> students;
     std::unordered_map<int, Book*> bookMap; 
     std::unordered_map<int, Student*> studentMap; 
+    std::stack<Book> deletedBooksStack;
+    std::stack<Student> deletedStudentsStack;
 
 public:
     System();
@@ -26,8 +29,21 @@ public:
     void searchBooksByCategory(const std::string& category) const;
     bool checkBookAvailability(int bno) const;
     
+    void displayAllStudents() const;
     void showStudent(int admno) const;
+    bool deleteStudent(int admno);
+
+    void displayAllBooks() const;
     void showBook(int bno) const; 
+    bool deleteBook(int bno);
+
+    // Undo and Redo functions for books
+    void undoDeleteBook();
+    void redoDeleteBook();
+
+    // Undo and Redo functions for students
+    void undoDeleteStudent();
+    void redoDeleteStudent();
 
 };
 

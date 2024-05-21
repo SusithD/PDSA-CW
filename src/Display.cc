@@ -18,6 +18,7 @@ void System::showBook(int bno) const {
     }
 }
 
+
 void System::showStudent(int admno) const {
     auto it = std::find_if(students.begin(), students.end(), [admno](const Student& student) { return student.admno == admno; });
     if (it != students.end()) {
@@ -41,4 +42,6 @@ void System::showStudent(int admno) const {
         std::cout << "Student not found." << std::endl;
     }
 }
+
+
 
