@@ -21,6 +21,10 @@ public:
     void createStudent(const std::string& name, int admno);
     void issueBook(int admno, int bno);
     void returnBook(int admno, int bno);
+    void searchBooksByAuthor(const std::string& author) const;
+    void searchBooksByPublication(const std::string& publication) const;
+    void searchBooksByCategory(const std::string& category) const;
+    bool checkBookAvailability(int bno) const;
     
     void showStudent(int admno) const;
     void showBook(int bno) const; 

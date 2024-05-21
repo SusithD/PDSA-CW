@@ -48,7 +48,10 @@ int main() {
         std::cout << "3. Create Student\n";
         std::cout << "4. Issue Book\n";
         std::cout << "5. Return Book\n";
-        std::cout << "6. Exit\n";
+        std::cout << "6. Search Books by Author\n";
+        std::cout << "7. Search Books by Publication\n";
+        std::cout << "8. Check Book Availability\n";
+        std::cout << "9. Exit\n";
         std::cout << "--------------------------------\n";
         std::cout << "Enter your choice: ";
         std::cin >> choice;
@@ -109,7 +112,35 @@ int main() {
                 clearCin();
                 librarySystem.returnBook(admno, bno);
                 break;
+
             case 6:
+                std::cout << "\n-- Search Books by Author --\n";
+                std::cout << "Enter author name: ";
+                getline(std::cin, author);
+                librarySystem.searchBooksByAuthor(author);
+                break;
+
+
+            case 7:
+                std::cout << "\n-- Search Books by Publication --\n";
+                std::cout << "Enter publication name: ";
+                getline(std::cin, publication);
+                librarySystem.searchBooksByPublication(publication);
+                break;
+
+            case 8:
+                std::cout << "\n-- Check Book Availability --\n";
+                std::cout << "Enter book number: ";
+                std::cin >> bno;
+                clearCin();
+                if (librarySystem.checkBookAvailability(bno)) {
+                    std::cout << "Book is available.\n";
+                } else {
+                    std::cout << "Book is not available.\n";
+                }
+                break;
+
+            case 9:
                 std::cout << "\nExiting...\n";
                 break;
             default:

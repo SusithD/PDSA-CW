@@ -39,7 +39,7 @@ void System::issueBook(int admno, int bno) {
     auto bookIt = bookMap.find(bno);
 
     if (studentIt != students.end() && bookIt != bookMap.end()) {
-        if (studentIt->token == 0 && bookIt->second->quant > 0) {
+        if (studentIt->token == 0 && checkBookAvailability(bno)) {
             studentIt->bno = bno;
             studentIt->token = 1;
             bookIt->second->quant--;
@@ -69,4 +69,46 @@ void System::returnBook(int admno, int bno) {
     } else {
         std::cout << "Either the book or the student does not exist.\n";
     }
+}
+
+void System::searchBooksByAuthor(const std::string& author) const {
+    bool found = false;
+    for (const auto& book : books) {
+        if (book.aname == author) {
+            std::cout << "Book Number: " << book.bno << "\n"
+                      << "Name: " << book.bname << "\n"
+                      << "Author: " << book.aname << "\n"
+                      << "Publication: " << book.pname << "\n"
+                      << "Quantity: " << book.quant << std::endl;
+            found = true;
+        }
+    }
+    if (!found) {
+        std::cout << "No books found for author: " << author << std::endl;
+    }
+}
+
+void System::searchBooksByPublication(const std::string& publication) const {
+    bool found = false;
+    for (const auto& book : books) {
+        if (book.pname == publication) {
+            std::cout << "Book Number: " << book.bno << "\n"
+                      << "Name: " << book.bname << "\n"
+                      << "Author: " << book.aname << "\n"
+                      << "Publication: " << book.pname << "\n"
+                      << "Quantity: " << book.quant << std::endl;
+            found = true;
+        }
+    }
+    if (!found) {
+        std::cout << "No books found for publication: " << publication << std::endl;
+    }
+}
+
+bool System::checkBookAvailability(int bno) const {
+    auto bookIt = bookMap.find(bno);
+    if (bookIt != bookMap.end()) {
+        return (bookIt->second->quant > 0);
+    }
+    return false;
 }
