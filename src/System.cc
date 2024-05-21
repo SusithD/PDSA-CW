@@ -117,20 +117,20 @@ bool System::deleteBook(int bno) {
     auto it = std::find_if(books.begin(), books.end(), [bno](const Book& book) { return book.bno == bno; });
     if (it != books.end()) {
         deletedBooksStack.push(*it); // Push the deleted book onto the stack
-        books.erase(it); // Erase the book from the system
+        books.erase(it); 
         std::cout << "Book deleted successfully.\n";
-        return true; // Return true indicating successful deletion
+        return true; 
     } else {
         std::cout << "Book not found.\n";
-        return false; // Return false indicating book not found
+        return false; 
     }
 }
 
 void System::undoDeleteBook() {
     if (!deletedBooksStack.empty()) {
         Book book = deletedBooksStack.top(); // Get the top book from the stack
-        books.push_back(book); // Add the deleted book back to the system
-        deletedBooksStack.pop(); // Remove the top item from the stack
+        books.push_back(book); 
+        deletedBooksStack.pop(); 
         std::cout << "Undone deletion of book.\n";
     } else {
         std::cout << "No deleted books to undo.\n";
@@ -140,8 +140,8 @@ void System::undoDeleteBook() {
 void System::redoDeleteBook() {
     if (!deletedBooksStack.empty()) {
         Book book = deletedBooksStack.top(); // Get the top book from the stack
-        deletedBooksStack.pop(); // Remove the top item from the stack
-        books.push_back(book); // Add the book back to the system
+        deletedBooksStack.pop(); 
+        books.push_back(book);
         std::cout << "Redone deletion of book.\n";
     } else {
         std::cout << "No deleted books to redo.\n";
@@ -151,21 +151,21 @@ void System::redoDeleteBook() {
 bool System::deleteStudent(int admno) {
     auto it = std::find_if(students.begin(), students.end(), [admno](const Student& student) { return student.admno == admno; });
     if (it != students.end()) {
-        deletedStudentsStack.push(*it); // Push the deleted student onto the stack
-        students.erase(it); // Erase the student from the system
+        deletedStudentsStack.push(*it); 
+        students.erase(it);
         std::cout << "Student deleted successfully.\n";
-        return true; // Return true indicating successful deletion
+        return true; 
     } else {
         std::cout << "Student not found.\n";
-        return false; // Return false indicating student not found
+        return false;
     }
 }
 
 void System::undoDeleteStudent() {
     if (!deletedStudentsStack.empty()) {
-        Student student = deletedStudentsStack.top(); // Get the top student from the stack
-        students.push_back(student); // Add the deleted student back to the system
-        deletedStudentsStack.pop(); // Remove the top item from the stack
+        Student student = deletedStudentsStack.top(); 
+        students.push_back(student); 
+        deletedStudentsStack.pop(); 
         std::cout << "Undone deletion of student.\n";
     } else {
         std::cout << "No deleted students to undo.\n";
@@ -174,9 +174,9 @@ void System::undoDeleteStudent() {
 
 void System::redoDeleteStudent() {
     if (!deletedStudentsStack.empty()) {
-        Student student = deletedStudentsStack.top(); // Get the top student from the stack
-        deletedStudentsStack.pop(); // Remove the top item from the stack
-        students.push_back(student); // Add the student back to the system
+        Student student = deletedStudentsStack.top(); 
+        deletedStudentsStack.pop();
+        students.push_back(student);
         std::cout << "Redone deletion of student.\n";
     } else {
         std::cout << "No deleted students to redo.\n";
