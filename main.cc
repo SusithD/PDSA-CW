@@ -38,6 +38,7 @@ void printHeader() {
 int main() {
     System librarySystem;
     int choice;
+    std::string author, publication;
 
     do {
         printHeader();
