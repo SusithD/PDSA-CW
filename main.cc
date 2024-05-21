@@ -274,14 +274,31 @@ int main()
                 switch (subChoice)
                 {
                 case 1:
+                {
                     std::cout << "\n-- Register New Student --\n";
                     std::cout << "Enter student name: ";
                     getline(std::cin, sname);
+
+                    // Check if the name is empty
+                    if (sname.empty())
+                    {
+                        std::cout << "Invalid input. Please enter a non-empty name.\n";
+                        break;
+                    }
+
                     std::cout << "Enter student admission number: ";
-                    std::cin >> admno;
-                    clearCin();
+                    if (!(std::cin >> admno))
+                    {
+                        std::cout << "Invalid input. Please enter a valid admission number.\n";
+                        clearCin(); // Clear the input buffer to prevent infinite loop
+                        break;
+                    }
+                    clearCin(); // Clear any remaining input in the buffer
+
                     librarySystem.createStudent(sname, admno);
                     break;
+                }
+
                 case 2:
                     std::cout << "\n-- Delete Student --\n";
                     std::cout << "Enter student admission number to delete: ";
